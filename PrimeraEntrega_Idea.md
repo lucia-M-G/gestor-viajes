@@ -31,5 +31,5 @@ Esta idea ha surgido de un autoanálisis de "problemas diarios" de los dos miemb
    1. Ver el registro
    2. Generar un informe
    3. Volver al menú principal
-4. Salir del gestor
+3. Salir del gestor
 ```
