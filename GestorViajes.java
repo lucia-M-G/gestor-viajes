@@ -16,7 +16,9 @@ public class GestorViajes {
         // Paso 5: ¿Existe la carpeta?
         if (!carpetaBase.exists()) {
             System.out.println("La carpeta 'viajes' no existe. Finalizando...");
-            return;
+            return; // se puede cambiar este return por mkdir() para que el programa avance y cree
+                    // automaticamente la carpeta o se crea la carpeta manual.
+
         }
 
         // Paso 6: Crear carpeta nueva con nombre introducido
