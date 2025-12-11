@@ -15,7 +15,7 @@ public class Main {
         
     }
    
-    static void leerViajeDesdeArchivo(File archivo) {
+    static void leerViajeArchivo(File archivo) {
         
     }
    
