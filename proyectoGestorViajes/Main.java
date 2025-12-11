@@ -19,7 +19,7 @@ public class Main {
     Scanner scanner = new Scanner(System.in);
     String carpetaViajes = "viajes_simple/";
 
-    /* 
+    /*
      * Crea el objeto de programa: constructor
      */
     public static void main(String[] args) {
@@ -72,6 +72,105 @@ public class Main {
     }
 
     void planificarViaje() {
+        System.out.println("\n--- Planificar un nuevo viaje ---");
+
+        // Ciudad
+        System.out.print("Ingrese ciudad: ");
+        String ciudad = scanner.nextLine();
+        ciudades.add(ciudad);
+
+        // País
+        System.out.print("Ingrese país: ");
+        String pais = scanner.nextLine();
+        paises.add(pais);
+
+        // Moneda
+        System.out.print("Ingrese moneda: ");
+        String moneda = scanner.nextLine();
+        monedas.add(moneda);
+
+        // Fechas
+        System.out.print("Ingrese fecha de inicio: ");
+        String fechaInicio = scanner.nextLine();
+        fechasInicio.add(fechaInicio);
+
+        System.out.print("Ingrese fecha de fin: ");
+        String fechaFin = scanner.nextLine();
+        fechasFin.add(fechaFin);
+
+        // Submenú Transporte
+        System.out.println("Seleccione transporte:");
+        System.out.println("1. Avión");
+        System.out.println("2. Tren");
+        System.out.println("3. Autobús");
+        System.out.println("4. Coche");
+        int opcionTransporte = leerNumero();
+        String transporte;
+        switch (opcionTransporte) {
+            case 1:
+                transporte = "Avión";
+                break;
+            case 2:
+                transporte = "Tren";
+                break;
+            case 3:
+                transporte = "Autobús";
+                break;
+            case 4:
+                transporte = "Coche";
+                break;
+            default:
+                transporte = "Otro";
+                break;
+        }
+        transportes.add(transporte);
+
+        // Número de adultos
+        System.out.print("Ingrese número de adultos: ");
+        String numAdultos = scanner.nextLine();
+        adultos.add(numAdultos);
+
+        // Número de niños
+        System.out.print("Ingrese número de niños: ");
+        String numNinos = scanner.nextLine();
+        ninos.add(numNinos);
+
+        // Submenú Actividad
+        System.out.println("Seleccione actividad principal:");
+        System.out.println("1. Parque Natural");
+        System.out.println("2. Cultural");
+        System.out.println("3. Ludica");
+        System.out.println("4. Gastronomica");
+        int opcionActividad = leerNumero();
+        String actividad;
+        switch (opcionActividad) {
+            case 1:
+                actividad = "Parque Natural";
+                break;
+            case 2:
+                actividad = "Cultural";
+                break;
+            case 3:
+                actividad = "Ludica";
+                break;
+            case 4:
+                actividad = "Gastronomica";
+                break;
+            default:
+                actividad = "Otra";
+                break;
+        }
+        actividades.add(actividad);
+
+        // Presupuesto
+        double presupuesto = leerDecimal();
+        presupuestos.add(String.valueOf(presupuesto));
+
+        // Generar ID automático al final
+        String id = "V" + (ids.size() + 1);
+        ids.add(id);
+
+        System.out.println("Viaje registrado con ID: " + id);
 
     }
 
