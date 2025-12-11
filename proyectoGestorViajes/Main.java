@@ -78,7 +78,15 @@ public class Main {
     }
 
     static void mostrarViajes() {
-
+        if (ids.isEmpty()) {
+            System.out.println("No hay viajes registrados.");
+        } else {
+            System.out.println("\n--- Lista de viajes ---");
+            for (int i = 0; i < ids.size(); i++) {
+                System.out.println((i + 1) + ". " + ciudades.get(i) + ", " + paises.get(i)
+                        + " (ID: " + ids.get(i) + ")");
+            }
+        }
     }
 
     static void mostrarDetallesViaje(int indice) {
