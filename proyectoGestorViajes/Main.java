@@ -33,7 +33,7 @@ public class Main {
             System.out.println("4. Eliminar viaje");
             System.out.println("Otro número para salir");
 
-            opcion = leerNumero(1, 4);
+            opcion = leerNumero();
 
             switch (opcion) {
                 case 1:
@@ -55,50 +55,58 @@ public class Main {
         } while (opcion >= 1 && opcion <= 4);
     }
 
-}
+    static void crearCarpeta() {
 
-static void crearCarpeta() {
+    }
 
-}
+    static void cargarViajes() {
 
-static void cargarViajes() {
+    }
 
-}
+    static void leerViajeArchivo(File archivo) {
 
-static void leerViajeArchivo(File archivo) {
+    }
 
-}
+    static void planificarViaje() {
 
-static void planificarViaje() {
+    }
 
-}
+    static void guardarEnArchivo(String id, String ciudad, String pais, String moneda,
+            String fechaInicio, String fechaFin, String transporte,
+            int numPers, String actividad, double presupuesto) {
 
-static void guardarEnArchivo(String id, String ciudad, String pais, String moneda,
-        String fechaInicio, String fechaFin, String transporte,
-        int numPers, String actividad, double presupuesto) {
+    }
 
-}
+    static void mostrarViajes() {
 
-static void mostrarViajes() {
+    }
 
-}
+    static void mostrarDetallesViaje(int indice) {
 
-static void mostrarDetallesViaje(int indice) {
+    }
 
-}
+    static void generarInforme() {
 
-static void generarInforme() {
+    }
 
-}
+    static void eliminarViaje() {
 
-static void eliminarViaje() {
+    }
 
-}
+    static int leerNumero() {
+        System.out.print("Ingrese un número: ");
+        String entrada = scanner.nextLine(); // leer como texto
+        int numero = Integer.parseInt(entrada); // convertir a entero
+        return numero;
 
-static int leerNumero(int min, int max) {
+    }
 
-}
-
-static double leerDecimal() {
+    // Método sencillo para leer un número decimal
+    static double leerDecimal() {
+        System.out.print("Ingrese un número decimal: ");
+        String entrada = scanner.nextLine(); // leer como texto
+        double numero = Double.parseDouble(entrada); // convertir a decimal
+        return numero;
+    }
 
 }
