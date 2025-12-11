@@ -4,52 +4,62 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
+        crearCarpeta();
+        cargarViajes();
+    }
+   
+    void init() {
+
+    }
+    
+    void crearCarpeta() {
+        // Creo una referencia para el programa de la carpeta en ruta previamente definida
+        File carpeta = new File(carpetaViajes);
+        if (!carpeta.exists()) {
+            carpeta.mkdir();
+        }
+    }
+
+   
+    void cargarViajes() {
         
     }
    
-    static void crearCarpeta() {
+    void leerViajeArchivo(File archivo) {
         
     }
    
-    static void cargarViajes() {
-        
-    }
-   
-    static void leerViajeArchivo(File archivo) {
-        
-    }
-   
-    static void planificarViaje() {
+    void planificarViaje() {
        
     }
    
-    static void guardarEnArchivo(String id, String ciudad, String pais, String moneda,
+    void guardarEnArchivo(String id, String ciudad, String pais, String moneda,
                                 String fechaInicio, String fechaFin, String transporte,
                                 int numPers, String actividad, double presupuesto) {
     
     }
    
-    static void mostrarViajes() {
+    void mostrarViajes() {
         
     }
    
-    static void mostrarDetallesViaje(int indice) {
+    void mostrarDetallesViaje(int indice) {
     
     }
 
-    static void generarInforme() {
+    void generarInforme() {
 
     }
    
-    static void eliminarViaje() {
+    void eliminarViaje() {
        
     }
    
-    static int leerNumero(int min, int max) {
+    int leerNumero(int min, int max) {
        
     }
    
-    static double leerDecimal() {
+    double leerDecimal() {
         
     }
 }
