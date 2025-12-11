@@ -47,7 +47,7 @@ public class Main {
                 }
             }
         } else {
-            System.out.println("No hay datos de viajes previos.");
+            System.out.println("No hay datos de viajes previos");
         }
     }
    
