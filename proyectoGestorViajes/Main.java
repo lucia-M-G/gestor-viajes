@@ -212,6 +212,41 @@ public class Main {
     }
 
     void eliminarViaje() {
+        if (ids.isEmpty()) {
+            System.out.println("No hay viajes registrados para eliminar.");
+            return;
+        }
+
+        mostrarViajes();
+        System.out.print("Ingrese el número del viaje a eliminar: ");
+        int seleccion = leerNumero();
+        int indice = seleccion - 1;
+
+        if (indice < 0 || indice >= ids.size()) {
+            System.out.println("Número inválido. No existe ese viaje.");
+            return;
+        }
+
+        // Guardar ID para borrar archivo
+        String id = ids.get(indice);
+
+        // Eliminar de todas las listas
+        ids.remove(indice);
+        ciudades.remove(indice);
+        paises.remove(indice);
+        monedas.remove(indice);
+        fechasInicio.remove(indice);
+        fechasFin.remove(indice);
+        transportes.remove(indice);
+        personas.remove(indice);
+        actividades.remove(indice);
+        presupuestos.remove(indice);
+
+        // Intentar borrar archivo asociado (sin alternativas)
+        File archivo = new File(carpetaViajes + id + ".txt");
+        archivo.delete();
+
+        System.out.println("✅ Viaje eliminado.");
 
     }
 
