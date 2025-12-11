@@ -28,7 +28,48 @@ public class GestorViajes {
             nuevaCarpeta.mkdir();
             System.out.println("Carpeta creada: " + nuevaCarpeta.getName());
         }
+        // Paso 7: Mostrar mensaje
+        System.out.println("Carpeta a leer:");
 
+        // Paso 8: Leer nombre de carpeta
+        String carpetaALeer = scanner.nextLine().trim();
+        File carpetaLectura = new File(carpetaALeer);
 
-    }return scanner.nextInt();
+        if (!carpetaLectura.exists()) {
+            carpetaLectura.mkdir();
+            System.out.println("Carpeta creada: " + carpetaLectura.getName());
+        }
+
+        // Paso 10: Leer opción numérica
+        System.out.println("Seleccione una opción:");
+        System.out.println("1. Planificar un viaje");
+        System.out.println("2. Planificaciones previas");
+        System.out.println("Otro número para salir");
+
+        int opcion = leerEntero(scanner);
+
+        // Paso 11: Switch de opciones
+        switch (opcion) {
+            case 1:
+                System.out.println("Opción 1: Planificar un viaje");
+                // Aquí se llamaría a planificarUnViaje();
+                break;
+            case 2:
+                System.out.println("Opción 2: Planificaciones previas");
+                // Aquí se llamaría a mostrarMenuPlanificacionesPrevias();
+                break;
+            default:
+                System.out.println("Saliendo... ¡Adiós!");
+        }
+    }
+
+    // Validación básica de enteros
+    public static int leerEntero(Scanner scanner) {
+        while (!scanner.hasNextInt()) {
+            System.out.print("Entrada no válida. Intente con un número: ");
+            scanner.next();
+        }
+
+        return scanner.nextInt();
+    }
 }
