@@ -11,8 +11,7 @@ public class Main {
     ArrayList<String> fechasInicio = new ArrayList<>();
     ArrayList<String> fechasFin = new ArrayList<>();
     ArrayList<String> transportes = new ArrayList<>();
-    ArrayList<String> adultos = new ArrayList<>();
-    ArrayList<String> ninos = new ArrayList<>();
+    ArrayList<String> personas = new ArrayList<>();
     ArrayList<String> actividades = new ArrayList<>();
     ArrayList<String> presupuestos = new ArrayList<>();
 
@@ -125,15 +124,10 @@ public class Main {
         }
         transportes.add(transporte);
 
-        // Número de adultos
-        System.out.print("Ingrese número de adultos: ");
-        String numAdultos = scanner.nextLine();
-        adultos.add(numAdultos);
-
-        // Número de niños
-        System.out.print("Ingrese número de niños: ");
-        String numNinos = scanner.nextLine();
-        ninos.add(numNinos);
+        // Número de personas
+        System.out.print("Ingrese número de personas: ");
+        String numPersonas = scanner.nextLine();
+        personas.add(numPersonas);
 
         // Submenú Actividad
         System.out.println("Seleccione actividad principal:");
@@ -207,8 +201,7 @@ public class Main {
         System.out.println("Fecha inicio: " + fechasInicio.get(indice));
         System.out.println("Fecha fin: " + fechasFin.get(indice));
         System.out.println("Transporte: " + transportes.get(indice));
-        System.out.println("Adultos: " + adultos.get(indice));
-        System.out.println("Niños: " + ninos.get(indice));
+        System.out.println("Personas: " + personas.get(indice));
         System.out.println("Actividad: " + actividades.get(indice));
         System.out.println("Presupuesto: " + presupuestos.get(indice));
 
