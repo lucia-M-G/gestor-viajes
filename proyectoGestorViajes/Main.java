@@ -13,14 +13,16 @@ public class Main {
     }
 
     void crearCarpeta() {
-        // Crear una referencia para el programa de la carpeta en ruta previamente definida
+        // Crear una referencia, para el programa, de la carpeta en la ruta previamente definida
         File carpeta = new File(carpetaViajes);
         if (!carpeta.exists()) {
+            // Crear carpeta
             carpeta.mkdir();
         }
     }
 
     void cargarViajes() {
+        // Solo es una referencia para este método, no creamos otra carpeta duplicada
         File carpeta = new File(carpetaViajes);
         // Crear array de objetos File y llenarlo con archivos dentro carpeta viajes_simple/
         // Si carpeta no existe el método .listFiles() devuelve un null
