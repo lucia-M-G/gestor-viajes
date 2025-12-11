@@ -163,6 +163,7 @@ public class Main {
         actividades.add(actividad);
 
         // Presupuesto
+        System.out.print("Ingrese el presupuesto estimado: ");
         double presupuesto = leerDecimal();
         presupuestos.add(String.valueOf(presupuesto));
 
@@ -193,6 +194,23 @@ public class Main {
     }
 
     void mostrarDetallesViaje(int indice) {
+        if (indice < 0 || indice >= ids.size()) {
+            System.out.println("❌ Índice inválido. No existe ese viaje.");
+            return;
+        }
+
+        System.out.println("\n--- Detalles del viaje ---");
+        System.out.println("ID: " + ids.get(indice));
+        System.out.println("Ciudad: " + ciudades.get(indice));
+        System.out.println("País: " + paises.get(indice));
+        System.out.println("Moneda: " + monedas.get(indice));
+        System.out.println("Fecha inicio: " + fechasInicio.get(indice));
+        System.out.println("Fecha fin: " + fechasFin.get(indice));
+        System.out.println("Transporte: " + transportes.get(indice));
+        System.out.println("Adultos: " + adultos.get(indice));
+        System.out.println("Niños: " + ninos.get(indice));
+        System.out.println("Actividad: " + actividades.get(indice));
+        System.out.println("Presupuesto: " + presupuestos.get(indice));
 
     }
 
@@ -214,10 +232,9 @@ public class Main {
 
     // Método sencillo para leer un número decimal
     double leerDecimal() {
-        System.out.print("Ingrese un número decimal: ");
         String entrada = scanner.nextLine(); // leer como texto
-        double numero = Double.parseDouble(entrada); // convertir a decimal
-        return numero;
+        return Double.parseDouble(entrada); // convertir a decimal
+
     }
 
 }
