@@ -76,26 +76,21 @@ public class Main {
         // Ciudad
         System.out.print("Ingrese ciudad: ");
         String ciudad = scanner.nextLine();
-        ciudades.add(ciudad);
 
         // País
         System.out.print("Ingrese país: ");
         String pais = scanner.nextLine();
-        paises.add(pais);
 
         // Moneda
         System.out.print("Ingrese moneda: ");
         String moneda = scanner.nextLine();
-        monedas.add(moneda);
 
         // Fechas
-        System.out.print("Ingrese fecha de inicio: ");
+        System.out.print("Ingrese fecha de inicio (DD/MM/AAAA): ");
         String fechaInicio = scanner.nextLine();
-        fechasInicio.add(fechaInicio);
 
-        System.out.print("Ingrese fecha de fin: ");
+        System.out.print("Ingrese fecha de fin (DD/MM/AAAA): ");
         String fechaFin = scanner.nextLine();
-        fechasFin.add(fechaFin);
 
         // Submenú Transporte
         System.out.println("Seleccione transporte:");
@@ -103,8 +98,9 @@ public class Main {
         System.out.println("2. Tren");
         System.out.println("3. Autobús");
         System.out.println("4. Coche");
-        int opcionTransporte = leerNumero();
+        int opcionTransporte = leerNumero(1, 4);
         String transporte;
+
         switch (opcionTransporte) {
             case 1:
                 transporte = "Avión";
@@ -122,12 +118,10 @@ public class Main {
                 transporte = "Otro";
                 break;
         }
-        transportes.add(transporte);
 
         // Número de personas
         System.out.print("Ingrese número de personas: ");
         String numPersonas = scanner.nextLine();
-        personas.add(numPersonas);
 
         // Submenú Actividad
         System.out.println("Seleccione actividad principal:");
@@ -135,8 +129,9 @@ public class Main {
         System.out.println("2. Cultural");
         System.out.println("3. Ludica");
         System.out.println("4. Gastronomica");
-        int opcionActividad = leerNumero();
+        int opcionActividad = leerNumero(1, 4);
         String actividad;
+
         switch (opcionActividad) {
             case 1:
                 actividad = "Parque Natural";
@@ -145,7 +140,7 @@ public class Main {
                 actividad = "Cultural";
                 break;
             case 3:
-                actividad = "Ludica";
+                actividad = "Lúdica";
                 break;
             case 4:
                 actividad = "Gastronomica";
@@ -154,19 +149,51 @@ public class Main {
                 actividad = "Otra";
                 break;
         }
-        actividades.add(actividad);
 
         // Presupuesto
         System.out.print("Ingrese el presupuesto estimado: ");
         double presupuesto = leerDecimal();
-        presupuestos.add(String.valueOf(presupuesto));
+        // Reconventir a String después del método de validación de decimales
+        String presupuestoStr = String.valueOf(presupuesto);
 
         // Generar ID automático al final
-        String id = "V" + (ids.size() + 1);
-        ids.add(id);
+        String id = "VIAJE_" + (ids.size() + 1);
 
-        System.out.println("Viaje registrado con ID: " + id);
+        // Mostrar resumen temporal
+        System.out.println("--- RESUMEN RÁPIDO ---");
+        System.out.println("ID: " + id);
+        System.out.println("Destino: " + ciudad + ", " + pais);
+        System.out.println("Estancia: " + fechaInicio + " → " + fechaFin);
+        System.out.println("Número de personas: " + numPersonas);
+        System.out.println("Transportes: " + transporte);
+        System.out.println("Actividades: " + actividad);
+        System.out.println("Presupuesto: " + presupuesto + " " + moneda);
 
+        // Preguntar si guardar
+        System.out.print("\n¿Guardar este viaje? (S/N): ");
+        String respuesta = scanner.nextLine();
+
+        if (respuesta.equalsIgnoreCase("S")) {
+            // Guardar en ArrayLists
+            ids.add(id);
+            ciudades.add(ciudad);
+            paises.add(pais);
+            monedas.add(moneda);
+            fechasInicio.add(fechaInicio);
+            fechasFin.add(fechaFin);
+            transportes.add(transporte);
+            personas.add(numPersonas);
+            actividades.add(actividad);
+            presupuestos.add(presupuestoStr);
+
+            // Guardar en archivo pasando parámetros a el método guardarEnArchivo()
+            guardarEnArchivo(id, ciudad, pais, moneda, fechaInicio, fechaFin,
+                    transporte, numPersonas, actividad, presupuestoStr);
+
+            System.out.println("Viaje guardado");
+        } else {
+            System.out.println("Viaje descartado");
+        }
     }
 
     void guardarEnArchivo(String id, String ciudad, String pais, String moneda,
@@ -246,16 +273,40 @@ public class Main {
         File archivo = new File(carpetaViajes + id + ".txt");
         archivo.delete();
 
-        System.out.println("✅ Viaje eliminado.");
+        System.out.println("Viaje eliminado.");
 
     }
 
-    int leerNumero() {
-        System.out.print("Ingrese un número: ");
-        String entrada = scanner.nextLine(); // leer como texto
-        int numero = Integer.parseInt(entrada); // convertir a entero
-        return numero;
+    int leerNumero(int min, int max) {
+        while (true) {
+            String entrada = scanner.nextLine();
 
+            // Verificar si todos son dígitos
+            boolean esNumero = true;
+            for (int i = 0; i < entrada.length(); i++) {
+                char numChar = entrada.charAt(i);
+                if (numChar < '0' || numChar > '9') {
+                    esNumero = false;
+                    break;
+                }
+            }
+
+            // Si no es número, pedir otra vez
+            if (!esNumero || entrada.isEmpty()) {
+                System.out.print("Ingresa un número válido: ");
+                continue;
+            }
+
+            // Convertir a número
+            int num = Integer.parseInt(entrada);
+
+            // Verificar rango
+            if (num >= min && num <= max) {
+                return num;
+            } else {
+                System.out.print("Número inválido. Ingresa entre " + min + " y " + max + ": ");
+            }
+        }
     }
 
     // Método sencillo para leer un número decimal
