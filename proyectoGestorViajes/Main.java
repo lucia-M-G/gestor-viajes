@@ -1,7 +1,24 @@
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.*;
+import java.io.File;
 
 public class Main {
+    // Listas globales para guardar datos de viajes
+    static ArrayList<String> ids = new ArrayList<>();
+    static ArrayList<String> ciudades = new ArrayList<>();
+    static ArrayList<String> paises = new ArrayList<>();
+    static ArrayList<String> monedas = new ArrayList<>();
+    static ArrayList<String> fechasInicio = new ArrayList<>();
+    static ArrayList<String> fechasFin = new ArrayList<>();
+    static ArrayList<String> transportes = new ArrayList<>();
+    static ArrayList<String> adultos = new ArrayList<>();
+    static ArrayList<String> ninos = new ArrayList<>();
+    static ArrayList<String> actividades = new ArrayList<>();
+    static ArrayList<String> presupuestos = new ArrayList<>();
+
+    static Scanner scanner = new Scanner(System.in);
+    static String carpetaViajes = "viajes_simple/";
+
     public static void main(String[] args) {
         init(); // Empieza el menú principal
     }
@@ -38,51 +55,50 @@ public class Main {
         } while (opcion >= 1 && opcion <= 4);
     }
 
-    }
+}
 
-    static void crearCarpeta() {
+static void crearCarpeta() {
 
-    }
+}
 
-    static void cargarViajes() {
+static void cargarViajes() {
 
-    }
+}
 
-    static void leerViajeArchivo(File archivo) {
+static void leerViajeArchivo(File archivo) {
 
-    }
+}
 
-    static void planificarViaje() {
+static void planificarViaje() {
 
-    }
+}
 
-    static void guardarEnArchivo(String id, String ciudad, String pais, String moneda,
-            String fechaInicio, String fechaFin, String transporte,
-            int numPers, String actividad, double presupuesto) {
+static void guardarEnArchivo(String id, String ciudad, String pais, String moneda,
+        String fechaInicio, String fechaFin, String transporte,
+        int numPers, String actividad, double presupuesto) {
 
-    }
+}
 
-    static void mostrarViajes() {
+static void mostrarViajes() {
 
-    }
+}
 
-    static void mostrarDetallesViaje(int indice) {
+static void mostrarDetallesViaje(int indice) {
 
-    }
+}
 
-    static void generarInforme() {
+static void generarInforme() {
 
-    }
+}
 
-    static void eliminarViaje() {
+static void eliminarViaje() {
 
-    }
+}
 
-    static int leerNumero(int min, int max) {
+static int leerNumero(int min, int max) {
 
-    }
+}
 
-    static double leerDecimal() {
+static double leerDecimal() {
 
-    }
 }
