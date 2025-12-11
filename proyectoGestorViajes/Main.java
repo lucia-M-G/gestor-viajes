@@ -52,7 +52,7 @@ public class Main {
     }
    
     /*
-     * Único método con control de errores try-catch.
+     * Los únicos métodos con control de errores try-catch són los que tienen manejo de archivos
      * Java con File genera exceptciones obligatorias, si no se manejan se sale del programa
      * Evitar manejar un exit forzado con throws, utilizando un try-catch simple
      */
@@ -117,8 +117,54 @@ public class Main {
     
     }
 
+    /*
+    * Los únicos métodos con control de errores try-catch són los que tienen manejo de archivos
+    * Java con File genera exceptciones obligatorias, si no se manejan se sale del programa
+    * Evitar manejar un exit forzado con throws, utilizando un try-catch simple
+    */
     void generarInforme() {
+        if (ids.isEmpty()) {
+            System.out.println("\nNo hay viajes para generar ningún informe");
+            return;
+        }
+        
+        System.out.println("--- Generar informe ---");
+        mostrarViajes();
+        
+        System.out.print("\nSelecciona el ID del viaje: ");
+        
+        int num = leerNumero(1, ids.size());
+        int indice = num - 1;
+        
+        // Crear archivo para el informe que usaremos como BB.DD.
+        String nombreArchivo = "informe_" + ids.get(indice) + ".txt";
+        PrintWriter writer = null;
+        
+        try {
+            writer = new PrintWriter(new FileWriter(nombreArchivo));
+        } catch (Exception e) {
+            System.out.println("Error: No se pudo crear el informe");
+            return;
+        }
+        
+        // Escribir informe
+        writer.println("--- Informe viaje ---");
+        writer.println("ID: " + ids.get(indice));
+        writer.println("DESTINO:");
+        writer.println("  Ciudad: " + ciudades.get(indice));
+        writer.println("  País: " + paises.get(indice));
+        writer.println();
+        writer.println("FECHAS:");
+        writer.println("  Fecha inicio: " + fechasInicio.get(indice));
+        writer.println("  Fecha fin: " + fechasFin.get(indice));
+        writer.println();
+        writer.println("Personas: " + personas.get(indice));
+        writer.println("Transporte: " + transporte.get(indice));
+        writer.println("Actividades: " + actividades.get(indice));
+        writer.println("Presupuesto: " + presupuestos.get(indice) + " " + monedas.get(indice));
 
+        writer.close();
+        System.out.println("Informe guardado como: " + nombreArchivo);
     }
    
     void eliminarViaje() {
