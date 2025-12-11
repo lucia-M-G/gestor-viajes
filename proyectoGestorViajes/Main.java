@@ -4,26 +4,30 @@ import java.io.File;
 
 public class Main {
     // Listas globales para guardar datos de viajes
-    static ArrayList<String> ids = new ArrayList<>();
-    static ArrayList<String> ciudades = new ArrayList<>();
-    static ArrayList<String> paises = new ArrayList<>();
-    static ArrayList<String> monedas = new ArrayList<>();
-    static ArrayList<String> fechasInicio = new ArrayList<>();
-    static ArrayList<String> fechasFin = new ArrayList<>();
-    static ArrayList<String> transportes = new ArrayList<>();
-    static ArrayList<String> adultos = new ArrayList<>();
-    static ArrayList<String> ninos = new ArrayList<>();
-    static ArrayList<String> actividades = new ArrayList<>();
-    static ArrayList<String> presupuestos = new ArrayList<>();
+    ArrayList<String> ids = new ArrayList<>();
+    ArrayList<String> ciudades = new ArrayList<>();
+    ArrayList<String> paises = new ArrayList<>();
+    ArrayList<String> monedas = new ArrayList<>();
+    ArrayList<String> fechasInicio = new ArrayList<>();
+    ArrayList<String> fechasFin = new ArrayList<>();
+    ArrayList<String> transportes = new ArrayList<>();
+    ArrayList<String> adultos = new ArrayList<>();
+    ArrayList<String> ninos = new ArrayList<>();
+    ArrayList<String> actividades = new ArrayList<>();
+    ArrayList<String> presupuestos = new ArrayList<>();
 
-    static Scanner scanner = new Scanner(System.in);
-    static String carpetaViajes = "viajes_simple/";
+    Scanner scanner = new Scanner(System.in);
+    String carpetaViajes = "viajes_simple/";
 
+    /* 
+     * Crea el objeto de programa: constructor
+     */
     public static void main(String[] args) {
-        init(); // Empieza el menú principal
+        Main programa = new Main();
+        programa.init();
     }
 
-    public static void init() {
+    void init() {
         int opcion;
         do {
             System.out.println("\n--- Menú Principal ---");
@@ -55,29 +59,29 @@ public class Main {
         } while (opcion >= 1 && opcion <= 4);
     }
 
-    static void crearCarpeta() {
+    void crearCarpeta() {
 
     }
 
-    static void cargarViajes() {
+    void cargarViajes() {
 
     }
 
-    static void leerViajeArchivo(File archivo) {
+    void leerViajeArchivo(File archivo) {
 
     }
 
-    static void planificarViaje() {
+    void planificarViaje() {
 
     }
 
-    static void guardarEnArchivo(String id, String ciudad, String pais, String moneda,
+    void guardarEnArchivo(String id, String ciudad, String pais, String moneda,
             String fechaInicio, String fechaFin, String transporte,
             int numPers, String actividad, double presupuesto) {
 
     }
 
-    static void mostrarViajes() {
+    void mostrarViajes() {
         if (ids.isEmpty()) {
             System.out.println("No hay viajes registrados.");
         } else {
@@ -89,19 +93,19 @@ public class Main {
         }
     }
 
-    static void mostrarDetallesViaje(int indice) {
+    void mostrarDetallesViaje(int indice) {
 
     }
 
-    static void generarInforme() {
+    void generarInforme() {
 
     }
 
-    static void eliminarViaje() {
+    void eliminarViaje() {
 
     }
 
-    static int leerNumero() {
+    int leerNumero() {
         System.out.print("Ingrese un número: ");
         String entrada = scanner.nextLine(); // leer como texto
         int numero = Integer.parseInt(entrada); // convertir a entero
@@ -110,7 +114,7 @@ public class Main {
     }
 
     // Método sencillo para leer un número decimal
-    static double leerDecimal() {
+    double leerDecimal() {
         System.out.print("Ingrese un número decimal: ");
         String entrada = scanner.nextLine(); // leer como texto
         double numero = Double.parseDouble(entrada); // convertir a decimal
