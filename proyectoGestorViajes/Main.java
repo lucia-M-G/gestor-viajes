@@ -45,8 +45,52 @@ public class Main {
         }
     }
    
+    /*
+     * Único método con control de errores try-catch.
+     * Java con File genera exceptciones obligatorias, si no se manejan se sale del programa
+     * Evitar manejar un exit forzado con throws, utilizando un try-catch simple
+     */
     void leerViajeArchivo(File archivo) {
-        
+        try {
+            // Crear un scanner específico para los archivos
+            Scanner lector = new Scanner(archivo);
+            
+            // Leer cada línea de los .txt + guardar en los ArrayList
+            // .replace() --> para quitar cabezeras del archivo al guardar los valores en los ArrayList
+            ids.add(lector.nextLine().replace("ID: ", ""));
+            ciudades.add(lector.nextLine().replace("Ciudad: ", ""));
+            paises.add(lector.nextLine().replace("País: ", ""));
+            monedas.add(lector.nextLine().replace("Moneda: ", ""));
+            fechasInicio.add(lector.nextLine().replace("Fecha inicio: ", ""));
+            fechasFin.add(lector.nextLine().replace("Fecha fin: ", ""));
+            
+            // Varios transportes, manejo distinto
+            // Saltar cabezera
+            lector.nextLine();
+            String transporteLinea = lector.nextLine();
+            transportes.add(transporteLinea);
+            
+            // Leer los .txt + guardar en el ArrayList
+            // .replace() --> para quitar cabezeras del archivo al guardar los valores en el ArrayList
+            personas.add(lector.nextLine().replace("Personas: ", ""));
+
+            // Varias actividades, manejo distinto
+            // Saltar cabezera
+            lector.nextLine();
+            String actividadLinea = lector.nextLine();
+            actividades.add(actividadLinea);
+            
+            // Leer los .txt + guardar en el ArrayList
+            // .replace() --> para quitar cabezeras del archivo al guardar los valores en el ArrayList
+            // Guardar iniccialmente presupuestos como String, manejar formato después
+            presupuestos.add(lector.nextLine().replace("Presupuesto: ", ""));
+            
+            // Cerrar el scanner lector para evitar errores
+            lector.close();
+        // Capturar error de tipo general --> Exception e
+        } catch (Exception e) {
+            System.out.println("Error leyendo archivo " + archivo.getName());
+        }
     }
    
     void planificarViaje() {
