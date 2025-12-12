@@ -153,7 +153,7 @@ public class Main {
         String pais = scanner.nextLine();
 
         // Moneda
-        System.out.print("Ingrese moneda: ");
+        System.out.print("Ingrese moneda en plural: ");
         String moneda = scanner.nextLine();
 
         // Fechas
@@ -191,7 +191,7 @@ public class Main {
         }
 
         // Número de personas
-        System.out.print("Ingrese número de personas: ");
+        System.out.print("\nIngrese número de personas: ");
         String numPersonas = scanner.nextLine();
 
         // Submenú Actividad
@@ -222,7 +222,7 @@ public class Main {
         }
 
         // Presupuesto
-        System.out.print("Ingrese el presupuesto estimado: ");
+        System.out.print("\nIngrese el presupuesto estimado (cantidad sin unidades): ");
         // Solo números positivos
         int presupuesto = leerNumero(0, Integer.MAX_VALUE);
         // Reconventir a String después del método de validación de decimales
@@ -232,14 +232,14 @@ public class Main {
         String id = "VIAJE_" + (ids.size() + 1);
 
         // Mostrar resumen temporal
-        System.out.println("--- RESUMEN RÁPIDO ---");
-        System.out.println("ID: " + id);
-        System.out.println("Destino: " + ciudad + ", " + pais);
-        System.out.println("Estancia: " + fechaInicio + " → " + fechaFin);
-        System.out.println("Número de personas: " + numPersonas);
-        System.out.println("Transportes: " + transporte);
-        System.out.println("Actividades: " + actividad);
-        System.out.println("Presupuesto: " + presupuesto + " " + moneda);
+        System.out.println("\n--- RESUMEN RAPIDO ---");
+        System.out.println("   ID: " + id);
+        System.out.println("   Destino: " + ciudad + ", " + pais);
+        System.out.println("   Estancia: " + fechaInicio + " --> " + fechaFin);
+        System.out.println("   Número de personas: " + numPersonas);
+        System.out.println("   Transportes: " + transporte);
+        System.out.println("   Actividades: " + actividad);
+        System.out.println("   Presupuesto: " + presupuesto + " " + moneda);
 
         // Preguntar si guardar
         System.out.print("\n¿Guardar este viaje? (S/N): ");
