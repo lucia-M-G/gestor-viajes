@@ -193,8 +193,8 @@ public class Main {
         System.out.println("Seleccione actividad principal:");
         System.out.println("1. Parque Natural");
         System.out.println("2. Cultural");
-        System.out.println("3. Ludica");
-        System.out.println("4. Gastronomica");
+        System.out.println("3. Lúdica");
+        System.out.println("4. Gastronómica");
         int opcionActividad = leerNumero(1, 4);
         String actividad;
 
