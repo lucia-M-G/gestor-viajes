@@ -345,6 +345,9 @@ public class Main {
      * Evitar manejar un exit forzado con throws, utilizando un try-catch simple
      */
     void generarInforme() {
+        PrintWriter writer = null;
+        Scanner lector = null;
+
         if (ids.isEmpty()) {
             System.out.println("\nNo hay viajes para generar ningún informe");
             return;
@@ -355,40 +358,65 @@ public class Main {
 
         int num = leerNumero(1, ids.size());
         int indice = num - 1;
+        String idViaje = ids.get(indice);
+    
+        // Ruta del archivo
+        String archivoViaje = carpetaViajes + idViaje + ".txt";
+        File archivo = new File(archivoViaje);
 
-        // Crear archivo para el informe
-        String nombreArchivo = carpetaInformes + "informe_" + ids.get(indice) + ".txt";
-        PrintWriter writer = null;
+        if (!archivo.exists()) {
+            System.out.println("Error: No se encuentra el archivo del viaje: " + archivoViaje);
+            return;
+        }
+
+        // Ruta para el informe
+        String nombreArchivo = carpetaInformes + "informe_" + idViaje + ".txt";
 
         try {
             writer = new PrintWriter(new FileWriter(nombreArchivo));
+            lector = new Scanner(archivo);
+
+            // Leer datos DEL ARCHIVO .txt
+            String id = lector.nextLine().replace("ID: ", "");
+            String ciudad = lector.nextLine().replace("Ciudad: ", "");
+            String pais = lector.nextLine().replace("País: ", "");
+            String moneda = lector.nextLine().replace("Moneda: ", "");
+            String fechaInicio = lector.nextLine().replace("Fecha inicio: ", "");
+            String fechaFin = lector.nextLine().replace("Fecha fin: ", "");
+            String transporte = lector.nextLine().replace("Transportes: ", "");
+            String personas = lector.nextLine().replace("Personas: ", "");
+            String actividades = lector.nextLine().replace("Actividades: ", "");
+            String presupuesto = lector.nextLine().replace("Presupuesto: ", "");
+            
+            // Escribir informe con datos DEL ARCHIVO
+            writer.println("--- Informe viaje ---");
+            writer.println("ID: " + id);
+            writer.println("DESTINO:");
+            writer.println("  Ciudad: " + ciudad);
+            writer.println("  País: " + pais);
+            writer.println();
+            writer.println("FECHAS:");
+            writer.println("  Fecha inicio: " + fechaInicio);
+            writer.println("  Fecha fin: " + fechaFin);
+            writer.println();
+            writer.println("Personas: " + personas);
+            writer.println("Transporte: " + transporte);
+            writer.println("Actividades: " + actividades);
+            writer.println("Presupuesto: " + presupuesto + " " + moneda);
+            
+            System.out.println("Informe guardado como: informe_" + idViaje + ".txt");
+        
+        // Capturar error de tipo general --> Exception e    
         } catch (Exception e) {
-            System.out.println("Error: No se pudo crear el informe");
-        // Añadir un finally para que writer siempre cierre y evitar errores
+            System.out.println("Error guardando archivo " + nombreArchivo);
         } finally {
             if (writer != null) {
                 writer.close();
             }
+            if (lector != null) {
+                lector.close();
+            }
         }
-
-        // Escribir informe
-        writer.println("--- Informe viaje ---");
-        writer.println("ID: " + ids.get(indice));
-        writer.println("DESTINO:");
-        writer.println("  Ciudad: " + ciudades.get(indice));
-        writer.println("  País: " + paises.get(indice));
-        writer.println();
-        writer.println("FECHAS:");
-        writer.println("  Fecha inicio: " + fechasInicio.get(indice));
-        writer.println("  Fecha fin: " + fechasFin.get(indice));
-        writer.println();
-        writer.println("Personas: " + personas.get(indice));
-        writer.println("Transporte: " + transportes.get(indice));
-        writer.println("Actividades: " + actividades.get(indice));
-        writer.println("Presupuesto: " + presupuestos.get(indice) + " " + monedas.get(indice));
-
-        writer.close();
-        System.out.println("Informe guardado como: informe_" + ids.get(indice) + ".txt");
     }
 
     void eliminarViaje() {
