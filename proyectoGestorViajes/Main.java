@@ -299,8 +299,7 @@ public class Main {
         } else {
             System.out.println("\n--- Lista de viajes ---");
             for (int i = 0; i < ids.size(); i++) {
-                System.out.println((i + 1) + ". " + ciudades.get(i) + ", " + paises.get(i)
-                        + " (ID: " + ids.get(i) + ")");
+                System.out.println((i + 1) + ". " + ciudades.get(i) + ", " + paises.get(i) + " (ID: " + ids.get(i) + ")");
             }
         }
     }
