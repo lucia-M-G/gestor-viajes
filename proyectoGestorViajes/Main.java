@@ -18,7 +18,7 @@ public class Main {
     ArrayList<String> presupuestos = new ArrayList<>();
 
     Scanner scanner = new Scanner(System.in);
-    String carpetaViajes = "viajes_simple/";
+    String carpetaViajes = "proyectoGestorViajes/viajes/";
 
     /*
      * Crea el objeto de programa: constructor
