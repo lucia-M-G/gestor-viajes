@@ -234,6 +234,7 @@ public class Main {
         System.out.print("\n¿Guardar este viaje? (S/N): ");
         String respuesta = scanner.nextLine();
 
+        // Omitir si es minúscula o mayuscula
         if (respuesta.equalsIgnoreCase("S")) {
             // Guardar en ArrayLists
             ids.add(id);
