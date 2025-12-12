@@ -218,7 +218,8 @@ public class Main {
 
         // Presupuesto
         System.out.print("Ingrese el presupuesto estimado: ");
-        double presupuesto = leerDecimal();
+        // Solo números positivos
+        int presupuesto = leerNumero(0, Integer.MAX_VALUE);
         // Reconventir a String después del método de validación de decimales
         String presupuestoStr = String.valueOf(presupuesto);
 
@@ -458,13 +459,6 @@ public class Main {
                 System.out.print("Número inválido. Ingresa entre " + min + " y " + max + ": ");
             }
         }
-    }
-
-    // Método sencillo para leer un número decimal
-    double leerDecimal() {
-        String entrada = scanner.nextLine(); // leer como texto
-        return Double.parseDouble(entrada); // convertir a decimal
-
     }
 
 }
