@@ -376,7 +376,7 @@ public class Main {
   
     void eliminarViaje() {
         if (ids.isEmpty()) {
-            System.out.println("No hay viajes registrados para eliminar.");
+            System.out.println("No hay viajes registrados para eliminar");
             return;
         }
 
@@ -386,7 +386,7 @@ public class Main {
         int indice = seleccion - 1;
 
         if (indice < 0 || indice >= ids.size()) {
-            System.out.println("Número inválido. No existe ese viaje.");
+            System.out.println("Número inválido. No existe ese viaje");
             return;
         }
 
@@ -409,7 +409,7 @@ public class Main {
         File archivo = new File(carpetaViajes + id + ".txt");
         archivo.delete();
 
-        System.out.println("Viaje eliminado.");
+        System.out.println("Viaje eliminado");
 
     }
 
