@@ -40,7 +40,7 @@ public class Main {
             System.out.println("2. Mostrar viajes");
             System.out.println("3. Generar informe");
             System.out.println("4. Eliminar viaje");
-            System.out.println("Otro número para salir");
+            System.out.println("5. Salir");
 
             opcion = leerNumero(Integer.MIN_VALUE, Integer.MAX_VALUE);
 
@@ -57,11 +57,11 @@ public class Main {
                 case 4:
                     eliminarViaje();
                     break;
-                default:
+                case 5:
                     System.out.println("Saliendo... ¡Adiós!");
             }
 
-        } while (opcion >= 1 && opcion <= 4);
+        } while (opcion != 5);
     }
 
     void crearCarpetas() {
