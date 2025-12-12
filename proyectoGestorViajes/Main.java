@@ -306,7 +306,7 @@ public class Main {
 
     void mostrarDetallesViaje(int indice) {
         if (indice < 0 || indice >= ids.size()) {
-            System.out.println("Índice inválido. No existe ese viaje.");
+            System.out.println("Índice inválido. No existe ese viaje");
             return;
         }
 
