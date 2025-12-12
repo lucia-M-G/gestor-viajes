@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Date;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
