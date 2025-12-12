@@ -19,6 +19,7 @@ public class Main {
 
     Scanner scanner = new Scanner(System.in);
     String carpetaViajes = "proyectoGestorViajes/viajes/";
+    String carpetaInformes = "proyectoGestorViajes/informes/";
 
     /*
      * Crea el objeto de programa: constructor
@@ -29,7 +30,7 @@ public class Main {
     }
 
     void init() {
-        crearCarpeta();
+        crearCarpetas();
         cargarViajes();
 
         int opcion;
@@ -63,13 +64,18 @@ public class Main {
         } while (opcion >= 1 && opcion <= 4);
     }
 
-    void crearCarpeta() {
+    void crearCarpetas() {
         // Crear una referencia, para el programa, de la carpeta en la ruta previamente
         // definida
         File carpeta = new File(carpetaViajes);
         if (!carpeta.exists()) {
             // Crear carpeta
             carpeta.mkdir();
+        }
+
+        File carpetaInfo = new File(carpetaInformes);
+        if (!carpetaInfo.exists()) {
+            carpetaInfo.mkdir();
         }
     }
 
@@ -354,7 +360,7 @@ public class Main {
         int indice = num - 1;
 
         // Crear archivo para el informe
-        String nombreArchivo = "informe_" + ids.get(indice) + ".txt";
+        String nombreArchivo = carpetaInformes + "/informe_" + ids.get(indice) + ".txt";
         PrintWriter writer = null;
 
         try {
