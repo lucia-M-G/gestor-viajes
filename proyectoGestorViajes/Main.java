@@ -91,7 +91,7 @@ public class Main {
                 boolean esTxt = nombreArchivo.endsWith(".txt");
                 
                 if (esTxt) {
-                    leerViajeDesdeArchivo(archivoActual);
+                    leerViajeDesdeArchivo(archivo);
                 }
             }
         } else {
