@@ -376,7 +376,7 @@ public class Main {
         writer.println("  Fecha fin: " + fechasFin.get(indice));
         writer.println();
         writer.println("Personas: " + personas.get(indice));
-        writer.println("Transporte: " + transporte.get(indice));
+        writer.println("Transporte: " + transportes.get(indice));
         writer.println("Actividades: " + actividades.get(indice));
         writer.println("Presupuesto: " + presupuestos.get(indice) + " " + monedas.get(indice));
 
