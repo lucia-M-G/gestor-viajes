@@ -209,7 +209,7 @@ public class Main {
                 actividad = "Lúdica";
                 break;
             case 4:
-                actividad = "Gastronomica";
+                actividad = "Gastronómica";
                 break;
             default:
                 actividad = "Otra";
