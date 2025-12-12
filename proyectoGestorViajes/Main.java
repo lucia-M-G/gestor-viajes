@@ -382,7 +382,7 @@ public class Main {
 
         mostrarViajes();
         System.out.print("Ingrese el número del viaje a eliminar: ");
-        int seleccion = leerNumero();
+        int seleccion = leerNumero(1, ids.size());
         int indice = seleccion - 1;
 
         if (indice < 0 || indice >= ids.size()) {
