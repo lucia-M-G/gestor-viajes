@@ -367,7 +367,11 @@ public class Main {
             writer = new PrintWriter(new FileWriter(nombreArchivo));
         } catch (Exception e) {
             System.out.println("Error: No se pudo crear el informe");
-            return;
+        // Añadir un finally para que writer siempre cierre y evitar errores
+        } finally {
+            if (writer != null) {
+                writer.close();
+            }
         }
 
         // Escribir informe
