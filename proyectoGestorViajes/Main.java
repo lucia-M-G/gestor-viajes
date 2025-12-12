@@ -298,9 +298,8 @@ public class Main {
 
             // Cerrar el writer para evitar errores
             writer.close();
-            System.out.println("Archivo " + nombreArchivo + " guardado");
-
-            // Capturar error de tipo general --> Exception e
+        
+        // Capturar error de tipo general --> Exception e
         } catch (Exception e) {
             System.out.println("Error guardando archivo " + nombreArchivo);
         }
