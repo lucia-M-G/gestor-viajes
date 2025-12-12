@@ -353,7 +353,7 @@ public class Main {
         int num = leerNumero(1, ids.size());
         int indice = num - 1;
 
-        // Crear archivo para el informe que usaremos como BB.DD.
+        // Crear archivo para el informe
         String nombreArchivo = "informe_" + ids.get(indice) + ".txt";
         PrintWriter writer = null;
 
