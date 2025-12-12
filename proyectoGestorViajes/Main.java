@@ -42,7 +42,7 @@ public class Main {
             System.out.println("4. Eliminar viaje");
             System.out.println("Otro número para salir");
 
-            opcion = leerNumero();
+            opcion = leerNumero(Integer.MIN_VALUE, Integer.MAX_VALUE);
 
             switch (opcion) {
                 case 1:
@@ -451,6 +451,9 @@ public class Main {
             // Verificar rango
             if (num >= min && num <= max) {
                 return num;
+            // Sin rango
+            } else if (min == Integer.MIN_VALUE && max == Integer.MAX_VALUE) {
+                System.out.print("Ingresa un número válido: ");
             } else {
                 System.out.print("Número inválido. Ingresa entre " + min + " y " + max + ": ");
             }
