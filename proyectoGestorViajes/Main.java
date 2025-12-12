@@ -312,7 +312,7 @@ public class Main {
             System.out.println("\n--- Lista de viajes ---");
             for (int i = 0; i < ids.size(); i++) {
                 System.out
-                        .println((i + 1) + ". " + ciudades.get(i) + ", " + paises.get(i) + " (ID: " + ids.get(i) + ")");
+                        .println((i + 1) + ". ID: " + ids.get(i) + " ( " + ciudades.get(i) + ", " + paises.get(i) + " )");
             }
         }
     }
@@ -350,16 +350,14 @@ public class Main {
             return;
         }
 
-        System.out.println("--- Generar informe ---");
-        mostrarViajes();
-
-        System.out.print("\nSelecciona el ID del viaje: ");
+        System.out.println("\n--- Generar informe ---");
+        System.out.print("Selecciona el ID del viaje: ");
 
         int num = leerNumero(1, ids.size());
         int indice = num - 1;
 
         // Crear archivo para el informe
-        String nombreArchivo = carpetaInformes + "/informe_" + ids.get(indice) + ".txt";
+        String nombreArchivo = carpetaInformes + "informe_" + ids.get(indice) + ".txt";
         PrintWriter writer = null;
 
         try {
@@ -390,7 +388,7 @@ public class Main {
         writer.println("Presupuesto: " + presupuestos.get(indice) + " " + monedas.get(indice));
 
         writer.close();
-        System.out.println("Informe guardado como: " + nombreArchivo);
+        System.out.println("Informe guardado como: informe_" + ids.get(indice) + ".txt");
     }
 
     void eliminarViaje() {
