@@ -30,10 +30,10 @@ public class Main {
     }
 
     void init() {
-      crearCarpeta();
-      cargarViajes();
-      
-      int opcion;
+        crearCarpeta();
+        cargarViajes();
+
+        int opcion;
         do {
             System.out.println("\n--- Menú Principal ---");
             System.out.println("1. Planificar un viaje");
@@ -65,21 +65,23 @@ public class Main {
     }
 
     void crearCarpeta() {
-        // Crear una referencia, para el programa, de la carpeta en la ruta previamente definida
+        // Crear una referencia, para el programa, de la carpeta en la ruta previamente
+        // definida
         File carpeta = new File(carpetaViajes);
         if (!carpeta.exists()) {
             // Crear carpeta
             carpeta.mkdir();
         }
     }
-  
+
     void cargarViajes() {
         // Solo es una referencia para este método, no creamos otra carpeta duplicada
         File carpeta = new File(carpetaViajes);
-        // Crear array de objetos File y llenarlo con archivos dentro carpeta viajes_simple/
+        // Crear array de objetos File y llenarlo con archivos dentro carpeta
+        // viajes_simple/
         // Si carpeta no existe el método .listFiles() devuelve un null
         File[] archivos = carpeta.listFiles();
-        
+
         // Manejar el null (null = vacío) de .listFiles()
         // ¿Carpeta existe y contiene datos?
         if (archivos != null) {
@@ -87,11 +89,11 @@ public class Main {
                 File archivo = archivos[i];
 
                 // Comprobar el formato de archivos de BB. DD.
-                String nombreArchivo = archivoActual.getName();
+                String nombreArchivo = archivo.getName();
                 boolean esTxt = nombreArchivo.endsWith(".txt");
-                
+
                 if (esTxt) {
-                    leerViajeDesdeArchivo(archivo);
+                    leerViajeArchivo(archivo);
                 }
             }
         } else {
@@ -100,17 +102,20 @@ public class Main {
     }
 
     /*
-     * Los únicos métodos con control de errores try-catch són los que tienen manejo de archivos
-     * Java con File genera exceptciones obligatorias, si no se manejan se sale del programa
+     * Los únicos métodos con control de errores try-catch són los que tienen manejo
+     * de archivos
+     * Java con File genera exceptciones obligatorias, si no se manejan se sale del
+     * programa
      * Evitar manejar un exit forzado con throws, utilizando un try-catch simple
      */
     void leerViajeArchivo(File archivoActual) {
         try {
             // Crear un scanner específico para los archivos
             Scanner lector = new Scanner(archivoActual);
-            
+
             // Leer cada línea de los .txt + guardar en los ArrayList
-            // .replace() --> para quitar cabezeras del archivo al guardar los valores en los ArrayList
+            // .replace() --> para quitar cabezeras del archivo al guardar los valores en
+            // los ArrayList
             ids.add(lector.nextLine().replace("ID: ", ""));
             ciudades.add(lector.nextLine().replace("Ciudad: ", ""));
             paises.add(lector.nextLine().replace("País: ", ""));
@@ -121,11 +126,11 @@ public class Main {
             personas.add(lector.nextLine().replace("Personas: ", ""));
             actividades.add(lector.nextLine().replace("Actividades: ", ""));
             presupuestos.add(lector.nextLine().replace("Presupuesto: ", ""));
-            
+
             // Cerrar el scanner lector para evitar errores
             lector.close();
 
-        // Capturar error de tipo general --> Exception e
+            // Capturar error de tipo general --> Exception e
         } catch (Exception e) {
             System.out.println("Error leyendo archivo " + archivoActual.getName());
         }
@@ -259,18 +264,20 @@ public class Main {
     }
 
     /*
-    * Los únicos métodos con control de errores try-catch són los que tienen manejo de archivos
-    * Java con File genera exceptciones obligatorias, si no se manejan se sale del programa
-    * Evitar manejar un exit forzado con throws, utilizando un try-catch simple
-    */
+     * Los únicos métodos con control de errores try-catch són los que tienen manejo
+     * de archivos
+     * Java con File genera exceptciones obligatorias, si no se manejan se sale del
+     * programa
+     * Evitar manejar un exit forzado con throws, utilizando un try-catch simple
+     */
     void guardarEnArchivo(String id, String ciudad, String pais, String moneda, String fechaInicio,
-        String fechaFin, String transporte, String numPersonas, String actividad, String presupuestoStr) {
+            String fechaFin, String transporte, String numPersonas, String actividad, String presupuestoStr) {
         // Ejemplo: viajes/VIAJE_1.txt
         String nombreArchivo = carpetaViajes + id + ".txt";
-        
+
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(nombreArchivo));
-            
+
             // Escribir en formato del archivo
             writer.println("ID: " + id);
             writer.println("Ciudad: " + ciudad);
@@ -282,14 +289,14 @@ public class Main {
             writer.println("Personas: " + numPersonas);
             writer.println("Actividades: " + actividad);
             writer.println("Presupuesto: " + presupuestoStr);
-            
+
             // Cerrar el writer para evitar errores
             writer.close();
             System.out.println("Archivo" + nombreArchivo + "guardado");
 
-        // Capturar error de tipo general --> Exception e
+            // Capturar error de tipo general --> Exception e
         } catch (Exception e) {
-            System.out.println("Error guardando archivo" + archivoActual.getName());
+            System.out.println("Error guardando archivo" + nombreArchivo);
         }
     }
 
@@ -299,7 +306,8 @@ public class Main {
         } else {
             System.out.println("\n--- Lista de viajes ---");
             for (int i = 0; i < ids.size(); i++) {
-                System.out.println((i + 1) + ". " + ciudades.get(i) + ", " + paises.get(i) + " (ID: " + ids.get(i) + ")");
+                System.out
+                        .println((i + 1) + ". " + ciudades.get(i) + ", " + paises.get(i) + " (ID: " + ids.get(i) + ")");
             }
         }
     }
@@ -323,37 +331,39 @@ public class Main {
         System.out.println("Presupuesto: " + presupuestos.get(indice));
 
     }
-  
+
     /*
-    * Los únicos métodos con control de errores try-catch són los que tienen manejo de archivos
-    * Java con File genera exceptciones obligatorias, si no se manejan se sale del programa
-    * Evitar manejar un exit forzado con throws, utilizando un try-catch simple
-    */
+     * Los únicos métodos con control de errores try-catch són los que tienen manejo
+     * de archivos
+     * Java con File genera exceptciones obligatorias, si no se manejan se sale del
+     * programa
+     * Evitar manejar un exit forzado con throws, utilizando un try-catch simple
+     */
     void generarInforme() {
         if (ids.isEmpty()) {
             System.out.println("\nNo hay viajes para generar ningún informe");
             return;
         }
-        
+
         System.out.println("--- Generar informe ---");
         mostrarViajes();
-        
+
         System.out.print("\nSelecciona el ID del viaje: ");
-        
+
         int num = leerNumero(1, ids.size());
         int indice = num - 1;
-        
+
         // Crear archivo para el informe que usaremos como BB.DD.
         String nombreArchivo = "informe_" + ids.get(indice) + ".txt";
         PrintWriter writer = null;
-        
+
         try {
             writer = new PrintWriter(new FileWriter(nombreArchivo));
         } catch (Exception e) {
             System.out.println("Error: No se pudo crear el informe");
             return;
         }
-        
+
         // Escribir informe
         writer.println("--- Informe viaje ---");
         writer.println("ID: " + ids.get(indice));
@@ -373,7 +383,7 @@ public class Main {
         writer.close();
         System.out.println("Informe guardado como: " + nombreArchivo);
     }
-  
+
     void eliminarViaje() {
         if (ids.isEmpty()) {
             System.out.println("No hay viajes registrados para eliminar");
