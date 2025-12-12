@@ -56,10 +56,10 @@ public class Main {
      * Java con File genera exceptciones obligatorias, si no se manejan se sale del programa
      * Evitar manejar un exit forzado con throws, utilizando un try-catch simple
      */
-    void leerViajeArchivo(File archivo) {
+    void leerViajeArchivo(File archivoActual) {
         try {
             // Crear un scanner específico para los archivos
-            Scanner lector = new Scanner(archivo);
+            Scanner lector = new Scanner(archivoActual);
             
             // Leer cada línea de los .txt + guardar en los ArrayList
             // .replace() --> para quitar cabezeras del archivo al guardar los valores en los ArrayList
@@ -69,33 +69,17 @@ public class Main {
             monedas.add(lector.nextLine().replace("Moneda: ", ""));
             fechasInicio.add(lector.nextLine().replace("Fecha inicio: ", ""));
             fechasFin.add(lector.nextLine().replace("Fecha fin: ", ""));
-            
-            // Varios transportes, manejo distinto
-            // Saltar cabezera
-            lector.nextLine();
-            String transporteLinea = lector.nextLine();
-            transportes.add(transporteLinea);
-            
-            // Leer los .txt + guardar en el ArrayList
-            // .replace() --> para quitar cabezeras del archivo al guardar los valores en el ArrayList
+            transportes.add(lector.nextLine().replace("Transportes: ", ""));
             personas.add(lector.nextLine().replace("Personas: ", ""));
-
-            // Varias actividades, manejo distinto
-            // Saltar cabezera
-            lector.nextLine();
-            String actividadLinea = lector.nextLine();
-            actividades.add(actividadLinea);
-            
-            // Leer los .txt + guardar en el ArrayList
-            // .replace() --> para quitar cabezeras del archivo al guardar los valores en el ArrayList
-            // Guardar iniccialmente presupuestos como String, manejar formato después
+            actividades.add(lector.nextLine().replace("Actividades: ", ""));
             presupuestos.add(lector.nextLine().replace("Presupuesto: ", ""));
             
             // Cerrar el scanner lector para evitar errores
             lector.close();
+
         // Capturar error de tipo general --> Exception e
         } catch (Exception e) {
-            System.out.println("Error leyendo archivo " + archivo.getName());
+            System.out.println("Error leyendo archivo " + archivoActual.getName());
         }
     }
    
@@ -103,10 +87,39 @@ public class Main {
        
     }
    
-    void guardarEnArchivo(String id, String ciudad, String pais, String moneda,
-                                String fechaInicio, String fechaFin, String transporte,
-                                int numPers, String actividad, double presupuesto) {
-    
+    /*
+    * Los únicos métodos con control de errores try-catch són los que tienen manejo de archivos
+    * Java con File genera exceptciones obligatorias, si no se manejan se sale del programa
+    * Evitar manejar un exit forzado con throws, utilizando un try-catch simple
+    */
+    void guardarEnArchivo(String id, String ciudad, String pais, String moneda, String fechaInicio,
+        String fechaFin, String transporte, String numPersonas, String actividad, String presupuestoStr) {
+        // Ejemplo: viajes/VIAJE_1.txt
+        String nombreArchivo = carpetaViajes + id + ".txt";
+        
+        try {
+            PrintWriter writer = new PrintWriter(new FileWriter(nombreArchivo));
+            
+            // Escribir en formato del archivo
+            writer.println("ID: " + id);
+            writer.println("Ciudad: " + ciudad);
+            writer.println("País: " + pais);
+            writer.println("Moneda: " + moneda);
+            writer.println("Fecha inicio: " + fechaInicio);
+            writer.println("Fecha fin: " + fechaFin);
+            writer.println("Transportes: " + transporte);
+            writer.println("Personas: " + numPersonas);
+            writer.println("Actividades: " + actividad);
+            writer.println("Presupuesto: " + presupuestoStr);
+            
+            // Cerrar el writer para evitar errores
+            writer.close();
+            System.out.println("Archivo" + nombreArchivo + "guardado");
+
+        // Capturar error de tipo general --> Exception e
+        } catch (Exception e) {
+            System.out.println("Error guardando archivo" + archivoActual.getName());
+        }
     }
    
     void mostrarViajes() {
