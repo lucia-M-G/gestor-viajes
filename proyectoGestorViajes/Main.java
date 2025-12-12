@@ -417,7 +417,9 @@ public class Main {
 
         // Intentar borrar archivo asociado (sin alternativas)
         File archivo = new File(carpetaViajes + id + ".txt");
-        archivo.delete();
+        if (archivo.exists()) {
+            archivo.delete();
+        }
 
         System.out.println("Viaje eliminado");
 
