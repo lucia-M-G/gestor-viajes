@@ -121,7 +121,7 @@ Presupuesto: 1500
 
 ## 👥 Autores
 
-**Lucía Martínez** - Coordinación del proyecto, arquitectura del sistema y documentación
+**Lucía Martínez** - Coordinación del proyecto, arquitectura del sistema y documentación <br>
 **Julio Arango** - Investigación de requerimientos, diseño de interfaz de usuario y documantación
 
 ## 🔮 Mejoras Futuras
